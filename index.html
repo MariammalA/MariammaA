@@ -3,292 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mariammal A — UI/UX Designer ✦</title>
+<title>Mariammal A — UI/UX Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sky-1:#3D93F2;
-    --sky-2:#1E6FE6;
-    --sky-3:#1352C9;
-    --sky-4:#0C3DA8;
-    --ink:#0B2A66;
-    --cream:#FFF7E8;
-    --white:#FFFFFF;
-    --soft:#E7F0FF;
-    --star:#CFE6FF;
-    --coral:#FF8DA1;
-    --yellow:#FFD15C;
-    --mint:#73E2B5;
-    --lilac:#B79CFF;
-    --teal:#34B7AC;
-    --r:30px;
-    --maxw:1080px;
+    --bg:#F7F5F0;
+    --surface:#FFFFFF;
+    --ink:#26242E;
+    --muted:#75727E;
+    --accent:#5B53C9;        /* periwinkle-indigo */
+    --accent-soft:#ECEBFB;
+    --coral:#FF8A6B;
+    --line:#EAE6DD;
+    --frame:#1B1B22;
+    --r:24px;
+    --maxw:1120px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    margin:0;
-    font-family:"Quicksand",system-ui,sans-serif;
-    color:var(--white);
-    font-size:17px;line-height:1.65;font-weight:500;
-    background:
-      radial-gradient(1200px 700px at 80% -5%, rgba(125,189,255,.55), transparent 60%),
-      radial-gradient(900px 600px at 10% 30%, rgba(98,160,255,.35), transparent 55%),
-      linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 35%, var(--sky-3) 70%, var(--sky-4) 100%);
-    background-attachment:fixed;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-    position:relative;
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Karla",system-ui,sans-serif;font-size:17px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;position:relative;z-index:2;}
+  h1,h2,h3,.logo{font-family:"Poppins",sans-serif;letter-spacing:-.02em;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .mono{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.02em;color:var(--accent);}
 
-  h1,h2,h3,.logo{font-family:"Fredoka",sans-serif;font-weight:600;letter-spacing:.2px;}
+  /* nav */
+  nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;}
+  .logo{font-weight:700;font-size:20px;display:flex;align-items:center;gap:9px;}
+  .logo .mark{width:30px;height:30px;border-radius:9px;background:var(--accent);color:#fff;
+    display:grid;place-items:center;font-size:15px;font-weight:700;}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{font-weight:600;font-size:15px;color:var(--muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.cta{color:var(--accent);}
+  @media(max-width:680px){.nav-links{gap:18px;}.nav-links a:not(.cta){display:none;}}
 
-  /* ---- starfield ---- */
-  #stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
-  .star{position:absolute;background:var(--star);border-radius:50%;
-    box-shadow:0 0 6px 1px rgba(207,230,255,.8);animation:twinkle linear infinite;}
-  @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7);}50%{opacity:1;transform:scale(1.1);}}
+  /* hero */
+  .hero{padding:70px 0 60px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:46px;text-align:center;}}
+  .hello{font-family:"Poppins";font-weight:700;font-size:clamp(1.4rem,3.5vw,2rem);color:var(--muted);margin:0;}
+  .hello b{color:var(--ink);}
+  .love{font-family:"Poppins";font-weight:800;font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.02;
+    margin:6px 0 0;display:flex;flex-wrap:wrap;gap:.25em;align-items:baseline;}
+  @media(max-width:880px){.love{justify-content:center;}}
+  .love .rot{color:var(--accent);position:relative;display:inline-block;min-width:5ch;}
+  .love .rot::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.18em;
+    background:var(--accent-soft);z-index:-1;border-radius:4px;}
+  .word{display:inline-block;transition:opacity .35s ease,transform .35s ease;}
+  .word.out{opacity:0;transform:translateY(12px);}
+  .hero p.bio{color:var(--muted);max-width:46ch;margin:24px 0 30px;font-size:1.08rem;}
+  @media(max-width:880px){.hero p.bio{margin-left:auto;margin-right:auto;}}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  @media(max-width:880px){.hero-btns{justify-content:center;}}
+  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:13px 24px;
+    font-family:"Poppins";font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s;}
+  .btn-p{background:var(--accent);color:#fff;box-shadow:0 12px 26px -12px rgba(91,83,201,.8);}
+  .btn-p:hover{transform:translateY(-3px);}
+  .btn-o{border:1.5px solid var(--ink);color:var(--ink);}
+  .btn-o:hover{background:var(--ink);color:#fff;transform:translateY(-3px);}
 
-  /* ---- nav ---- */
-  nav{position:sticky;top:0;z-index:40;}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
-  .logo{font-size:30px;font-weight:700;color:#fff;display:flex;align-items:center;gap:4px;
-    text-shadow:0 2px 0 rgba(11,42,102,.25);}
-  .logo .dot{color:var(--yellow);}
-  .logo .lstar{font-size:20px;color:#fff;filter:drop-shadow(0 0 6px rgba(255,255,255,.7));}
-  .nav-links{display:flex;gap:24px;align-items:center;}
-  .nav-links a{font-weight:600;font-size:15px;color:#EAF2FF;transition:color .2s,transform .2s;}
-  .nav-links a:hover{color:#fff;transform:translateY(-1px);}
-  .pill{background:#fff;color:var(--sky-2)!important;border-radius:999px;padding:9px 18px;
-    font-weight:700;box-shadow:0 8px 20px -8px rgba(11,42,102,.6);}
-  .pill:hover{transform:translateY(-2px);}
-  @media(max-width:720px){.nav-links a:not(.pill){display:none;}}
+  /* hero portrait + floating phones */
+  .portrait-stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:380px;}
+  .blob{width:300px;height:300px;border-radius:46% 54% 52% 48%/52% 46% 54% 48%;
+    background:linear-gradient(160deg,var(--accent-soft),#FCEFE9);position:relative;
+    display:grid;place-items:center;box-shadow:0 30px 60px -34px rgba(91,83,201,.5);}
+  .avatar{width:230px;height:auto;}
+  .fphone{position:absolute;width:110px;border-radius:18px;background:var(--frame);padding:7px;
+    box-shadow:0 22px 40px -18px rgba(20,20,30,.45);animation:floaty 6s ease-in-out infinite;}
+  .fphone .scr{border-radius:12px;overflow:hidden;aspect-ratio:9/19;background:#fff;}
+  .fphone.one{top:6%;left:-2%;animation-delay:.2s;}
+  .fphone.two{bottom:2%;right:-4%;animation-delay:1.4s;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(var(--rt,0deg));}50%{transform:translateY(-14px) rotate(var(--rt,0deg));}}
+  @media(max-width:480px){.fphone{width:88px;}.blob{width:250px;height:250px;}.avatar{width:190px;}}
 
-  /* ---- hero ---- */
-  .hero{text-align:center;padding:30px 0 40px;position:relative;}
-  .hi{font-family:"Fredoka";font-weight:700;font-size:clamp(2.6rem,9vw,5.2rem);
-    line-height:1;margin:18px 0 0;color:#fff;text-shadow:0 4px 0 rgba(11,42,102,.18);}
-  .hi .wave{display:inline-block;animation:wave 2.6s ease-in-out infinite;transform-origin:70% 70%;}
-  @keyframes wave{0%,60%,100%{transform:rotate(0);}10%{transform:rotate(16deg);}20%{transform:rotate(-8deg);}30%{transform:rotate(16deg);}40%{transform:rotate(-4deg);}50%{transform:rotate(10deg);}}
-  .intro{max-width:30ch;margin:26px auto 0;font-size:clamp(1.05rem,2.5vw,1.4rem);
-    font-weight:600;line-height:1.5;}
-  .intro mark{background:rgba(255,255,255,.18);color:#fff;padding:.12em .25em;border-radius:8px;
-    -webkit-box-decoration-break:clone;box-decoration-break:clone;}
-  .intro b{color:var(--yellow);font-weight:700;}
-  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;}
-  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:14px 26px;
-    font-weight:700;font-size:16px;font-family:"Fredoka";transition:transform .2s,box-shadow .2s;}
-  .btn-y{background:var(--yellow);color:#5A3A00;box-shadow:0 12px 24px -10px rgba(255,180,40,.9);}
-  .btn-y:hover{transform:translateY(-3px) rotate(-1deg);}
-  .btn-o{background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.55);}
-  .btn-o:hover{background:#fff;color:var(--sky-2);transform:translateY(-3px);}
+  /* sections */
+  section{padding:64px 0;}
+  .sec-eyebrow{font-family:"Space Mono",monospace;color:var(--accent);font-size:13px;letter-spacing:.08em;text-transform:uppercase;}
+  .sec-title{font-weight:800;font-size:clamp(1.9rem,5vw,2.8rem);margin:8px 0 0;}
+  .sec-head{margin-bottom:50px;max-width:560px;}
 
-  /* floating doodles */
-  .doodle{position:absolute;z-index:1;animation:float 6s ease-in-out infinite;pointer-events:none;
-    filter:drop-shadow(0 8px 14px rgba(11,42,102,.25));}
-  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--rot,0deg));}50%{transform:translateY(-16px) rotate(var(--rot,0deg));}}
+  /* project rows */
+  .proj{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:46px 0;border-top:1px solid var(--line);}
+  .proj:first-of-type{border-top:none;}
+  @media(max-width:840px){.proj{grid-template-columns:1fr;gap:32px;}}
+  .proj.flip .proj-visual{order:2;}
+  @media(max-width:840px){.proj.flip .proj-visual{order:0;}}
+  .proj h3{font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);margin:10px 0 6px;}
+  .proj .cat{font-family:"Space Mono",monospace;color:var(--muted);font-size:14px;}
+  .proj .cat span{color:var(--accent);}
+  .proj p{color:var(--muted);margin:14px 0 22px;}
+  .cs-link{display:inline-flex;align-items:center;gap:8px;font-family:"Poppins";font-weight:600;
+    color:var(--accent);font-size:15px;transition:gap .2s;}
+  .cs-link::after{content:"→";transition:transform .2s;}
+  .cs-link:hover{gap:11px;}
+  .cs-link:hover::after{transform:translateX(3px);}
+  .pmeta{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);margin-top:14px;}
 
-  /* hero illustration */
-  .scene{max-width:560px;margin:18px auto -10px;position:relative;z-index:2;}
-  .scene svg{width:100%;height:auto;animation:bob 7s ease-in-out infinite;}
-  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  /* device frames */
+  .proj-visual{display:flex;justify-content:center;align-items:flex-end;gap:18px;}
+  .phone{width:200px;border-radius:34px;background:var(--frame);padding:11px;
+    box-shadow:0 34px 60px -28px rgba(20,20,30,.5);position:relative;}
+  .phone::before{content:"";position:absolute;top:13px;left:50%;transform:translateX(-50%);
+    width:60px;height:6px;border-radius:6px;background:#34343d;z-index:3;}
+  .phone .screen{border-radius:24px;overflow:hidden;aspect-ratio:9/19.3;background:#fff;position:relative;}
+  .phone .screen img{width:100%;height:100%;object-fit:cover;}
+  .phone.tilt{transform:rotate(-5deg);}
+  .phone.tilt2{transform:rotate(4deg) translateY(14px);width:170px;}
+  @media(max-width:480px){.phone{width:165px;}.phone.tilt2{width:140px;}}
 
-  /* ---- section heads ---- */
-  section{padding:54px 0;position:relative;}
-  .sec-eyebrow{font-family:"Caveat";font-weight:700;font-size:1.6rem;color:var(--yellow);
-    text-align:center;margin-bottom:2px;}
-  .sec-title{text-align:center;font-size:clamp(1.9rem,5vw,3rem);color:#fff;margin:0 0 6px;
-    text-shadow:0 3px 0 rgba(11,42,102,.18);}
-  .sec-sub{text-align:center;max-width:46ch;margin:0 auto 40px;color:#EAF2FF;font-weight:500;}
+  .browser{width:100%;max-width:440px;border-radius:16px;overflow:hidden;background:var(--frame);
+    box-shadow:0 34px 60px -28px rgba(20,20,30,.5);}
+  .browser .bar{height:34px;display:flex;align-items:center;gap:7px;padding:0 14px;background:#23232b;}
+  .browser .bar i{width:11px;height:11px;border-radius:50%;background:#4a4a55;display:block;}
+  .browser .bar i:nth-child(1){background:#ff6058;}.browser .bar i:nth-child(2){background:#ffbd2e;}.browser .bar i:nth-child(3){background:#28c840;}
+  .browser .shot{aspect-ratio:16/10;background:#fff;overflow:hidden;}
+  .browser .shot img{width:100%;height:100%;object-fit:cover;}
 
-  /* ---- project cards ---- */
-  .projects{display:flex;flex-direction:column;gap:30px;}
-  .pcard{
-    background:rgba(255,255,255,.96);color:var(--ink);border-radius:var(--r);
-    padding:34px;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;
-    box-shadow:0 30px 60px -34px rgba(6,28,80,.8);position:relative;overflow:hidden;
-    transition:transform .3s;
-  }
-  .pcard:hover{transform:translateY(-6px);}
-  .pcard:nth-child(even){grid-template-columns:1fr 1.1fr;}
-  .pcard:nth-child(even) .pc-art{order:-1;}
-  @media(max-width:780px){.pcard,.pcard:nth-child(even){grid-template-columns:1fr;}
-    .pcard:nth-child(even) .pc-art{order:0;}}
-  .pc-kind{font-family:"Caveat";font-weight:700;font-size:1.5rem;color:var(--sky-2);line-height:1;}
-  .pcard h3{font-size:2rem;margin:4px 0 12px;color:var(--ink);line-height:1;}
-  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
-  .tag{background:var(--soft);color:var(--sky-2);font-weight:700;font-size:12.5px;
-    padding:6px 12px;border-radius:999px;font-family:"Quicksand";}
-  .pc-desc{color:#2E4A82;font-weight:500;margin:0 0 20px;}
-  .pc-link{display:inline-flex;align-items:center;gap:8px;font-family:"Fredoka";font-weight:600;
-    color:#fff;background:var(--sky-2);padding:11px 20px;border-radius:999px;transition:gap .2s,transform .2s;}
-  .pc-link:hover{gap:13px;transform:translateY(-2px);}
-  .pc-art{border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:var(--soft);
-    position:relative;box-shadow:inset 0 0 0 1px rgba(11,42,102,.06);}
-  .pc-art img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
-  .pcard:hover .pc-art img{transform:scale(1.05);}
-  .pc-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;
-    flex-direction:column;gap:6px;text-align:center;padding:20px;
-    background:linear-gradient(135deg,var(--lilac),var(--sky-1));}
-  .pc-fallback b{font-family:"Fredoka";font-size:1.4rem;color:#fff;}
-  .pc-stats{font-size:12.5px;color:#5E78A8;font-weight:600;margin-top:14px;font-family:"Quicksand";}
+  .fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
+    gap:6px;text-align:center;padding:16px;background:linear-gradient(160deg,#7B73E8,#5B53C9);color:#fff;}
+  .fallback b{font-family:"Poppins";font-weight:700;font-size:1.1rem;}
+  .fallback small{font-size:11px;opacity:.85;}
 
-  /* ---- mini gallery ---- */
-  .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;}
-  @media(max-width:680px){.mini{grid-template-columns:1fr 1fr;}}
-  .mcard{background:rgba(255,255,255,.96);border-radius:22px;overflow:hidden;color:var(--ink);
-    box-shadow:0 22px 44px -28px rgba(6,28,80,.8);transition:transform .25s;display:block;}
-  .mcard:hover{transform:translateY(-5px) rotate(-.5deg);}
-  .mthumb{aspect-ratio:1/1;overflow:hidden;background:var(--soft);position:relative;}
+  /* faux app screens */
+  .faux{position:absolute;inset:0;display:flex;flex-direction:column;font-family:"Karla";}
+  .faux .top{height:30px;display:flex;justify-content:space-between;align-items:center;padding:0 14px;font-size:10px;color:#9a97a6;font-weight:700;}
+  .faux .hd{padding:6px 14px 10px;}
+  .faux .hd .t{font-family:"Poppins";font-weight:700;font-size:14px;color:var(--ink);}
+  .faux .hd .s{font-size:10px;color:#9a97a6;}
+  .faux .search{margin:0 14px;height:26px;border-radius:8px;background:#F1F0F6;}
+  .faux .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px;}
+  .faux .ct{height:64px;border-radius:10px;}
+  .faux .row{display:flex;gap:8px;align-items:center;padding:8px 14px;}
+  .faux .av{width:30px;height:30px;border-radius:8px;flex:0 0 auto;}
+  .faux .lines{flex:1;}
+  .faux .ln{height:7px;border-radius:4px;background:#ECEAF3;margin-bottom:5px;}
+  .faux .ln.sh{width:60%;}
+  .faux .nav3{margin-top:auto;height:40px;border-top:1px solid #EFEEF4;display:flex;justify-content:space-around;align-items:center;}
+  .faux .nb{width:18px;height:18px;border-radius:6px;background:#E4E2EE;}
+  .faux .nb.on{background:var(--accent);}
+
+  /* more grid */
+  .more{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:680px){.more{grid-template-columns:1fr 1fr;}}
+  .mcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    transition:transform .25s,box-shadow .25s;display:block;}
+  .mcard:hover{transform:translateY(-5px);box-shadow:0 24px 44px -28px rgba(20,20,30,.35);}
+  .mthumb{aspect-ratio:4/3;background:var(--accent-soft);overflow:hidden;position:relative;}
   .mthumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
-  .mcard:hover .mthumb img{transform:scale(1.06);}
+  .mcard:hover img{transform:scale(1.05);}
   .mbody{padding:14px 16px;}
-  .mbody b{font-family:"Fredoka";font-size:1rem;}
-  .mbody span{display:block;font-size:12px;color:#6B82B0;font-weight:600;margin-top:2px;}
-  .mfall{position:absolute;inset:0;display:none;align-items:center;justify-content:center;
-    background:linear-gradient(135deg,var(--mint),var(--teal));color:#fff;font-family:"Fredoka";
-    font-weight:600;text-align:center;padding:14px;}
+  .mbody b{font-family:"Poppins";font-size:1rem;}
+  .mbody span{display:block;font-size:12.5px;color:var(--muted);}
+  .mfall{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:#fff;
+    font-family:"Poppins";font-weight:700;background:linear-gradient(160deg,var(--coral),#ff6f4d);text-align:center;padding:12px;}
 
-  .center{text-align:center;margin-top:34px;}
+  /* about */
+  .about{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start;}
+  @media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:28px;}}
+  .about p{color:var(--muted);}
+  .about p.lead{color:var(--ink);font-size:1.15rem;font-weight:500;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px;}
+  .chip{background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:13px;padding:7px 13px;border-radius:999px;}
 
-  /* ---- about ---- */
-  .about-card{background:rgba(255,255,255,.96);color:var(--ink);border-radius:var(--r);
-    padding:42px;box-shadow:0 30px 60px -34px rgba(6,28,80,.8);max-width:760px;margin:0 auto;}
-  .about-card p{color:#2E4A82;font-weight:500;}
-  .about-card .lead{font-size:1.2rem;color:var(--ink);font-weight:600;}
-  .path{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 28px;justify-content:center;}
-  .step{background:var(--soft);color:var(--sky-2);font-weight:700;padding:8px 16px;border-radius:999px;
-    font-family:"Fredoka";font-size:14px;}
-  .arrow{color:var(--coral);font-weight:700;}
-  .skills{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:6px;}
-  .sk{background:#fff;border:2px solid var(--soft);color:#2E4A82;font-weight:600;font-size:13px;
-    padding:7px 13px;border-radius:999px;transition:transform .2s,border-color .2s;}
-  .sk:hover{transform:translateY(-2px);border-color:var(--coral);}
-  .sk i{font-style:normal;margin-right:5px;}
-
-  /* ---- connect ---- */
+  /* connect */
   .connect{text-align:center;}
-  .connect h2{font-size:clamp(2.2rem,6vw,3.6rem);}
-  .connect .sub{color:#EAF2FF;max-width:40ch;margin:8px auto 30px;font-weight:500;}
-  .links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
-  .clink{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.5);color:#fff;
-    border-radius:999px;padding:13px 22px;font-weight:700;font-family:"Fredoka";
-    display:inline-flex;align-items:center;gap:9px;transition:transform .2s,background .2s;}
-  .clink:hover{transform:translateY(-3px);background:#fff;color:var(--sky-2);}
-  .clink.y{background:var(--yellow);border-color:var(--yellow);color:#5A3A00;}
-  .clink.y:hover{background:#ffc94a;color:#5A3A00;}
+  .connect .mono{display:block;margin-bottom:8px;}
+  .connect h2{font-size:clamp(2rem,6vw,3.2rem);font-weight:800;margin:0 0 12px;}
+  .connect p{color:var(--muted);max-width:42ch;margin:0 auto 28px;}
+  .connect .email{font-family:"Poppins";font-weight:700;font-size:clamp(1.1rem,3vw,1.6rem);color:var(--accent);}
+  .socials{display:flex;gap:14px;justify-content:center;margin-top:26px;}
+  .soc{width:46px;height:46px;border-radius:14px;background:var(--surface);border:1px solid var(--line);
+    display:grid;place-items:center;color:var(--ink);font-weight:700;font-family:"Poppins";
+    transition:transform .2s,background .2s,color .2s;}
+  .soc:hover{background:var(--accent);color:#fff;transform:translateY(-3px);border-color:var(--accent);}
+  footer{padding:30px 0 46px;text-align:center;color:var(--muted);font-size:13.5px;font-family:"Space Mono",monospace;}
 
-  footer{text-align:center;padding:30px 0 50px;color:#CFE0FF;font-weight:600;font-size:14px;}
-  footer .note{font-family:"Caveat";font-size:1.4rem;color:#fff;margin-bottom:6px;}
-
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important;}
-    .reveal{opacity:1;transform:none;}html{scroll-behavior:auto;}
-  }
-  :focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px;}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}.reveal{opacity:1;transform:none;}html{scroll-behavior:auto;}}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px;}
 </style>
 </head>
 <body>
 
-<div id="stars" aria-hidden="true"></div>
-
 <nav>
   <div class="wrap nav-inner">
-    <div class="logo">mari<span class="dot">.</span><span class="lstar">✦</span></div>
+    <a class="logo" href="#top"><span class="mark">M</span>Mariammal A</a>
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="#connect">Contact</a>
-      <a href="#connect" class="pill">Say hi 👋</a>
+      <a href="#connect" class="cta">Contact</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="hero">
-  <div class="wrap">
-    <!-- floating doodles -->
-    <svg class="doodle" style="top:6%;left:6%;--rot:-8deg;width:58px;animation-delay:.2s" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="#FFF7E8"/><circle cx="24" cy="26" r="4" fill="#FF8DA1"/><circle cx="40" cy="24" r="4" fill="#FFD15C"/><circle cx="44" cy="38" r="4" fill="#73E2B5"/><circle cx="26" cy="42" r="4" fill="#B79CFF"/><circle cx="32" cy="32" r="6" fill="#1E6FE6"/></svg>
-    <svg class="doodle" style="top:10%;right:7%;--rot:12deg;width:48px;animation-delay:1.1s" viewBox="0 0 64 64" aria-hidden="true"><rect x="26" y="8" width="12" height="40" rx="3" fill="#FFD15C"/><polygon points="26,48 38,48 32,60" fill="#0B2A66"/><rect x="26" y="8" width="12" height="8" rx="3" fill="#FF8DA1"/></svg>
-    <svg class="doodle" style="top:34%;left:3%;--rot:6deg;width:46px;animation-delay:1.6s" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 L36 26 L56 30 L36 34 L32 54 L28 34 L8 30 L28 26 Z" fill="#FFFFFF"/></svg>
-    <svg class="doodle" style="top:30%;right:4%;--rot:-10deg;width:54px;animation-delay:.6s" viewBox="0 0 64 64" aria-hidden="true"><polygon points="10,52 54,52 54,18" fill="#73E2B5"/><polygon points="10,52 54,52 54,18" fill="none" stroke="#0B2A66" stroke-width="2"/></svg>
-
-    <h1 class="hi"><span class="wave">👋</span> Hi, I'm Mari!</h1>
-    <p class="intro"><mark>A <b>UI/UX designer</b> &amp; visual storyteller who turns messy, complex flows into products that feel easy. I love designing things that make life simpler.</mark></p>
-    <div class="hero-btns">
-      <a href="#work" class="btn btn-y">See my work ✦</a>
-      <a href="#connect" class="btn btn-o">Let's chat 💬</a>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hello">Hi there, I'm <b>Mari!</b></p>
+      <h1 class="love">I love to&nbsp;<span class="rot"><span class="word" id="rotword">research</span></span></h1>
+      <p class="bio">I'm a UI/UX designer based in Chennai with a background in design &amp; technology. I create simple, clean experiences that are functional and reliable — with a splash of creativity. Take a look around, and let's bring ideas to life!</p>
+      <div class="hero-btns">
+        <a href="#work" class="btn btn-p">View my work</a>
+        <a href="#connect" class="btn btn-o">Let's connect</a>
+      </div>
     </div>
 
-    <!-- desk illustration -->
-    <div class="scene reveal">
-      <svg viewBox="0 0 560 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a designer working at a creative desk, seen from above">
-        <!-- glow blob -->
-        <ellipse cx="280" cy="240" rx="240" ry="170" fill="#5BB0F5" opacity=".45"/>
-        <ellipse cx="280" cy="250" rx="190" ry="135" fill="#7DD957" opacity=".9"/>
-        <ellipse cx="280" cy="250" rx="190" ry="135" fill="#8FE36A" opacity=".5"/>
-        <!-- desk -->
-        <rect x="150" y="150" width="260" height="180" rx="20" fill="#2FA89E"/>
-        <rect x="150" y="150" width="260" height="180" rx="20" fill="#34B7AC" opacity=".5"/>
-        <!-- sketchpad -->
-        <rect x="232" y="178" width="100" height="116" rx="8" fill="#FFF7E8"/>
-        <rect x="244" y="192" width="76" height="14" rx="3" fill="#CFE0FF"/>
-        <rect x="244" y="214" width="50" height="50" rx="6" fill="#BFE0FF"/>
-        <circle cx="269" cy="232" r="7" fill="#1E6FE6"/>
-        <rect x="258" y="244" width="22" height="4" rx="2" fill="#1E6FE6"/>
-        <rect x="302" y="214" width="18" height="18" rx="4" fill="#FF8DA1"/>
-        <rect x="302" y="240" width="18" height="24" rx="4" fill="#FFD15C"/>
-        <rect x="244" y="272" width="76" height="6" rx="3" fill="#E7F0FF"/>
-        <!-- phone -->
-        <rect x="166" y="186" width="52" height="100" rx="11" fill="#16224A"/>
-        <rect x="172" y="194" width="40" height="84" rx="7" fill="#5B6CE0"/>
-        <rect x="178" y="202" width="28" height="8" rx="4" fill="#fff" opacity=".85"/>
-        <rect x="178" y="216" width="28" height="20" rx="5" fill="#FFD15C"/>
-        <rect x="178" y="242" width="13" height="13" rx="3" fill="#73E2B5"/>
-        <rect x="193" y="242" width="13" height="13" rx="3" fill="#FF8DA1"/>
-        <rect x="178" y="261" width="28" height="8" rx="4" fill="#fff" opacity=".7"/>
-        <!-- pencil cup -->
-        <ellipse cx="368" cy="200" rx="22" ry="9" fill="#1E6FE6"/>
-        <rect x="346" y="200" width="44" height="34" rx="8" fill="#2C84F0"/>
-        <ellipse cx="368" cy="234" rx="22" ry="8" fill="#1659C0"/>
-        <rect x="352" y="166" width="6" height="40" rx="3" fill="#FFD15C" transform="rotate(8 355 186)"/>
-        <rect x="366" y="162" width="6" height="44" rx="3" fill="#FF8DA1"/>
-        <rect x="380" y="168" width="6" height="38" rx="3" fill="#73E2B5" transform="rotate(-9 383 187)"/>
-        <!-- coffee -->
-        <circle cx="372" cy="282" r="20" fill="#FFFFFF"/>
-        <circle cx="372" cy="282" r="13" fill="#7A4A24"/>
-        <path d="M390 276 q14 6 0 14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-        <!-- plant -->
-        <path d="M186 318 q-6 -34 -22 -42 q18 -2 26 18 q4 -22 22 -24 q-6 22 -22 30 Z" fill="#3FB36B"/>
-        <rect x="172" y="312" width="34" height="22" rx="5" fill="#E08A5B"/>
-        <!-- figure: shoulders + head (top-down) -->
-        <path d="M196 360 q84 -54 168 0 q14 60 -84 60 q-98 0 -84 -60 Z" fill="#5FB85A"/>
-        <ellipse cx="280" cy="356" rx="46" ry="42" fill="#6B4A2B"/>
-        <ellipse cx="280" cy="352" rx="46" ry="40" fill="#79552F"/>
-        <path d="M280 314 q-4 40 0 78" stroke="#5A3D22" stroke-width="3" fill="none"/>
-        <ellipse cx="280" cy="324" rx="20" ry="14" fill="#8A6238"/>
-        <!-- arms reaching to pad -->
-        <path d="M238 374 q-6 -30 36 -54 l10 14 q-32 18 -28 44 Z" fill="#5FB85A"/>
-        <path d="M322 374 q6 -30 -36 -54 l-10 14 q32 18 28 44 Z" fill="#5FB85A"/>
-        <circle cx="280" cy="306" r="11" fill="#E8B98E"/>
-        <!-- scattered tools -->
-        <rect x="120" y="250" width="6" height="40" rx="3" fill="#FFD15C" transform="rotate(40 123 270)"/>
-        <rect x="430" y="120" width="6" height="40" rx="3" fill="#B79CFF" transform="rotate(-30 433 140)"/>
-        <circle cx="440" cy="300" r="14" fill="#FF8DA1"/>
-        <circle cx="440" cy="300" r="14" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 4"/>
-        <!-- sparkles -->
-        <path d="M120 140 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 Z" fill="#fff"/>
-        <path d="M450 220 l2.4 7 7 2.4 -7 2.4 -2.4 7 -2.4 -7 -7 -2.4 7 -2.4 Z" fill="#fff"/>
-        <path d="M300 110 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2 Z" fill="#FFF7E8"/>
-      </svg>
+    <div class="portrait-stage reveal">
+      <div class="fphone one" style="--rt:-6deg;">
+        <div class="scr">
+          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/1cfa4c185696463.Y3JvcCwxMzA5LDEwMjQsNTUsMA.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="blob">
+        <svg class="avatar" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated portrait of Mariammal">
+          <!-- hair back -->
+          <path d="M58 120 q-8 -86 62 -88 q70 2 62 88 q6 70 -20 110 l-84 0 q-26 -40 -20 -110 Z" fill="#3A2A22"/>
+          <!-- neck -->
+          <rect x="104" y="168" width="32" height="34" rx="14" fill="#E2A883"/>
+          <!-- shoulders -->
+          <path d="M70 260 q4 -52 50 -56 q46 4 50 56 Z" fill="#5B53C9"/>
+          <path d="M120 204 l-12 18 12 12 12 -12 Z" fill="#fff" opacity=".25"/>
+          <!-- face -->
+          <ellipse cx="120" cy="128" rx="50" ry="56" fill="#F1B98E"/>
+          <!-- hair front -->
+          <path d="M66 120 q-6 -78 54 -82 q60 4 54 82 q-22 -34 -54 -30 q-32 -4 -54 30 Z" fill="#46332A"/>
+          <path d="M70 116 q12 -22 50 -22 q38 0 50 22 q-18 -10 -50 -8 q-32 -2 -50 8 Z" fill="#3A2A22"/>
+          <!-- eyes -->
+          <ellipse cx="100" cy="128" rx="5.5" ry="7" fill="#2C2230"/>
+          <ellipse cx="140" cy="128" rx="5.5" ry="7" fill="#2C2230"/>
+          <circle cx="102" cy="125" r="1.8" fill="#fff"/><circle cx="142" cy="125" r="1.8" fill="#fff"/>
+          <!-- brows -->
+          <path d="M92 116 q8 -5 16 -1" stroke="#3A2A22" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M132 115 q8 -4 16 1" stroke="#3A2A22" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- blush -->
+          <ellipse cx="92" cy="146" rx="8" ry="5" fill="#FF9E8A" opacity=".5"/>
+          <ellipse cx="148" cy="146" rx="8" ry="5" fill="#FF9E8A" opacity=".5"/>
+          <!-- nose + smile -->
+          <path d="M120 132 l-4 12 8 0 Z" fill="#E0A074" opacity=".6"/>
+          <path d="M104 152 q16 14 32 0" stroke="#B86A4B" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- earrings -->
+          <circle cx="70" cy="150" r="4" fill="#FFD15C"/><circle cx="170" cy="150" r="4" fill="#FFD15C"/>
+        </svg>
+      </div>
+      <div class="fphone two" style="--rt:5deg;">
+        <div class="scr">
+          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/5e6d6b247766337.Y3JvcCwxNDQwLDExMjYsMCwyOA.png" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -296,134 +270,160 @@
 <!-- WORK -->
 <section id="work">
   <div class="wrap">
-    <div class="sec-eyebrow reveal">my favourite things I've built</div>
-    <h2 class="sec-title reveal">Selected work ✦</h2>
-    <p class="sec-sub reveal">A mix of end-to-end products and platforms — owned from research to ship.</p>
-
-    <div class="projects">
-
-      <article class="pcard reveal">
-        <div class="pc-info">
-          <div class="pc-kind">End-to-End Application</div>
-          <h3>Yogra</h3>
-          <div class="tags"><span class="tag">UX Research</span><span class="tag">Product Design</span><span class="tag">Dashboards</span><span class="tag">Prototyping</span></div>
-          <p class="pc-desc">A smart hotel dining &amp; food-community platform — waiter-less ordering, real-time order tracking, a kitchen dashboard, a manager app for menus &amp; billing, and social foodie features like tipping and reviews.</p>
-          <a class="pc-link" href="mailto:mariammals3599@gmail.com?subject=Tell%20me%20about%20Yogra">Walk me through it ✦</a>
-        </div>
-        <div class="pc-art">
-          <div class="pc-fallback" style="display:flex"><b>Yogra</b><small>Food-tech platform</small></div>
-        </div>
-      </article>
-
-      <article class="pcard reveal">
-        <div class="pc-info">
-          <div class="pc-kind">Multi-Platform Ecosystem</div>
-          <h3>Iyyan</h3>
-          <div class="tags"><span class="tag">UX/UI</span><span class="tag">Service Design</span><span class="tag">Admin Dashboard</span><span class="tag">Mobile + Web</span></div>
-          <p class="pc-desc">A tech-support service ecosystem connecting users, engineers, and service centers. I designed the user app, an admin dashboard for bookings &amp; allocation, and a service-center platform — streamlining the whole journey from request to completion.</p>
-          <a class="pc-link" href="mailto:mariammals3599@gmail.com?subject=Tell%20me%20about%20Iyyan">Walk me through it ✦</a>
-        </div>
-        <div class="pc-art">
-          <div class="pc-fallback" style="display:flex"><b>Iyyan</b><small>Service ecosystem</small></div>
-        </div>
-      </article>
-
-      <article class="pcard reveal">
-        <div class="pc-info">
-          <div class="pc-kind">Concept App · Most loved on Behance</div>
-          <h3>AI Tool Organizer</h3>
-          <div class="tags"><span class="tag">Product Design</span><span class="tag">UI</span><span class="tag">AI for Design</span></div>
-          <p class="pc-desc">A tidy home for all your AI tools — discover, organize, and jump into the right one fast. My most-viewed project to date.</p>
-          <a class="pc-link" href="https://www.behance.net/gallery/185696463/AI-Tool-organizer" target="_blank" rel="noopener">See on Behance ➜</a>
-          <div class="pc-stats">♥ 21 appreciations · ◉ 446 views</div>
-        </div>
-        <div class="pc-art">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/1cfa4c185696463.Y3JvcCwxMzA5LDEwMjQsNTUsMA.jpg" alt="AI Tool Organizer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="pc-fallback"><b>AI Tool Organizer</b></div>
-        </div>
-      </article>
-
-      <article class="pcard reveal">
-        <div class="pc-info">
-          <div class="pc-kind">Mobile App</div>
-          <h3>IsaiFox</h3>
-          <div class="tags"><span class="tag">UX/UI</span><span class="tag">Discovery</span><span class="tag">Prototyping</span></div>
-          <p class="pc-desc">A local music-event discovery app that helps people find gigs and live shows happening near them — built around a fun, fast browsing experience.</p>
-          <a class="pc-link" href="https://www.behance.net/gallery/247766337/IsaiFox-Local-Music-Event-discovery-App" target="_blank" rel="noopener">See on Behance ➜</a>
-          <div class="pc-stats">♥ 11 appreciations · ◉ 21 views</div>
-        </div>
-        <div class="pc-art">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/5e6d6b247766337.Y3JvcCwxNDQwLDExMjYsMCwyOA.png" alt="IsaiFox music event app" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="pc-fallback"><b>IsaiFox</b></div>
-        </div>
-      </article>
-
-      <article class="pcard reveal">
-        <div class="pc-info">
-          <div class="pc-kind">Responsive Website</div>
-          <h3>Fashion Website</h3>
-          <div class="tags"><span class="tag">Web Design</span><span class="tag">Visual Design</span><span class="tag">Branding</span></div>
-          <p class="pc-desc">A clean, editorial e-commerce experience for a fashion brand — balancing strong visuals with an effortless shopping flow.</p>
-          <a class="pc-link" href="https://www.behance.net/gallery/189981309/Fashion-website" target="_blank" rel="noopener">See on Behance ➜</a>
-          <div class="pc-stats">♥ 6 appreciations · ◉ 62 views</div>
-        </div>
-        <div class="pc-art">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ef2cfc189981309.Y3JvcCwzOTI3LDMwNzIsMTk0LDA.png" alt="Fashion website" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="pc-fallback"><b>Fashion Website</b></div>
-        </div>
-      </article>
-
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">// selected work</span>
+      <h2 class="sec-title">Things I've designed</h2>
     </div>
 
-    <!-- mini gallery -->
-    <h2 class="sec-title reveal" style="margin-top:60px;">Doodles &amp; branding 🎨</h2>
-    <p class="sec-sub reveal">A glimpse at the visual + branding side of what I do.</p>
-    <div class="mini">
-      <a class="mcard reveal" href="https://www.behance.net/gallery/225136173/Durafit-(Leather-shoe)-Branding" target="_blank" rel="noopener">
-        <div class="mthumb">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/a7f37f225136173.Y3JvcCwxNTcwLDEyMjgsMTMyLDEzMg.jpg" alt="Durafit branding" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="mfall">Durafit Branding</div>
+    <!-- Yogra -->
+    <article class="proj reveal">
+      <div class="proj-visual">
+        <div class="phone tilt">
+          <div class="screen">
+            <div class="faux">
+              <div class="top"><span>9:41</span><span>▭ ▦ ▮</span></div>
+              <div class="hd"><div class="t">Yogra 🍴</div><div class="s">What's good today?</div></div>
+              <div class="search"></div>
+              <div class="grid">
+                <div class="ct" style="background:#FFE2D4"></div><div class="ct" style="background:#E0F0E6"></div>
+                <div class="ct" style="background:#E7E5FA"></div><div class="ct" style="background:#FFF1CC"></div>
+              </div>
+              <div class="row"><div class="av" style="background:#FFB59B"></div><div class="lines"><div class="ln"></div><div class="ln sh"></div></div></div>
+              <div class="nav3"><div class="nb on"></div><div class="nb"></div><div class="nb"></div><div class="nb"></div></div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="proj-info">
+        <span class="cat">// <span>End-to-End</span> Hotel Dining Platform</span>
+        <h3>Yogra</h3>
+        <p>A smart hotel dining &amp; food-community app — waiter-less ordering, real-time order tracking, a kitchen dashboard, and a manager app for menus, QR codes &amp; billing, plus social foodie features like tipping and reviews.</p>
+        <a class="cs-link" href="mailto:mariammals3599@gmail.com?subject=Yogra%20case%20study">View case study</a>
+      </div>
+    </article>
+
+    <!-- Iyyan -->
+    <article class="proj flip reveal">
+      <div class="proj-visual">
+        <div class="phone tilt2">
+          <div class="screen">
+            <div class="faux">
+              <div class="top"><span>9:41</span><span>▭ ▦ ▮</span></div>
+              <div class="hd"><div class="t">Iyyan 🛠️</div><div class="s">Your service requests</div></div>
+              <div class="row"><div class="av" style="background:#5B53C9"></div><div class="lines"><div class="ln"></div><div class="ln sh"></div></div></div>
+              <div class="row"><div class="av" style="background:#34B7AC"></div><div class="lines"><div class="ln"></div><div class="ln sh"></div></div></div>
+              <div class="row"><div class="av" style="background:#FF8A6B"></div><div class="lines"><div class="ln"></div><div class="ln sh"></div></div></div>
+              <div class="grid"><div class="ct" style="background:#E7E5FA"></div><div class="ct" style="background:#E0F0E6"></div></div>
+              <div class="nav3"><div class="nb"></div><div class="nb on"></div><div class="nb"></div><div class="nb"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <span class="cat">// <span>Multi-Platform</span> Service Ecosystem</span>
+        <h3>Iyyan</h3>
+        <p>A tech-support ecosystem connecting users, engineers, and service centers. I designed the user app, an admin dashboard for bookings &amp; engineer allocation, and a service-center platform — streamlining the whole journey from request to completion.</p>
+        <a class="cs-link" href="mailto:mariammals3599@gmail.com?subject=Iyyan%20case%20study">View case study</a>
+      </div>
+    </article>
+
+    <!-- AI Tool Organizer -->
+    <article class="proj reveal">
+      <div class="proj-visual">
+        <div class="phone tilt">
+          <div class="screen">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/1cfa4c185696463.Y3JvcCwxMzA5LDEwMjQsNTUsMA.jpg" alt="AI Tool Organizer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="fallback"><b>AI Tool Organizer</b><small>Concept</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <span class="cat">// <span>Concept</span> AI Tool Discovery</span>
+        <h3>AI Tool Organizer</h3>
+        <p>A tidy home for all your AI tools — discover, organize, and jump into the right one fast. My most-loved project on Behance.</p>
+        <a class="cs-link" href="https://www.behance.net/gallery/185696463/AI-Tool-organizer" target="_blank" rel="noopener">View on Behance</a>
+        <div class="pmeta">♥ 21 · ◉ 446 views</div>
+      </div>
+    </article>
+
+    <!-- IsaiFox -->
+    <article class="proj flip reveal">
+      <div class="proj-visual">
+        <div class="phone tilt2">
+          <div class="screen">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/5e6d6b247766337.Y3JvcCwxNDQwLDExMjYsMCwyOA.png" alt="IsaiFox app" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="fallback"><b>IsaiFox</b><small>Music events</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <span class="cat">// <span>Mobile App</span> Local Music Events</span>
+        <h3>IsaiFox</h3>
+        <p>A music-event discovery app that helps people find gigs and live shows happening near them — built around fun, fast browsing.</p>
+        <a class="cs-link" href="https://www.behance.net/gallery/247766337/IsaiFox-Local-Music-Event-discovery-App" target="_blank" rel="noopener">View on Behance</a>
+        <div class="pmeta">♥ 11 · ◉ 21 views</div>
+      </div>
+    </article>
+
+    <!-- Fashion Website -->
+    <article class="proj reveal">
+      <div class="proj-visual">
+        <div class="browser">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="shot">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ef2cfc189981309.Y3JvcCwzOTI3LDMwNzIsMTk0LDA.png" alt="Fashion website" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="fallback"><b>Fashion Website</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <span class="cat">// <span>Responsive</span> Web Design</span>
+        <h3>Fashion Website</h3>
+        <p>A clean, editorial e-commerce experience for a fashion brand — balancing strong visuals with an effortless shopping flow.</p>
+        <a class="cs-link" href="https://www.behance.net/gallery/189981309/Fashion-website" target="_blank" rel="noopener">View on Behance</a>
+        <div class="pmeta">♥ 6 · ◉ 62 views</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- MORE / BRANDING -->
+<section style="padding-top:8px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">// also</span>
+      <h2 class="sec-title">Branding &amp; visual design</h2>
+    </div>
+    <div class="more">
+      <a class="mcard reveal" href="https://www.behance.net/gallery/225136173/Durafit-(Leather-shoe)-Branding" target="_blank" rel="noopener">
+        <div class="mthumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/a7f37f225136173.Y3JvcCwxNTcwLDEyMjgsMTMyLDEzMg.jpg" alt="Durafit branding" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mfall">Durafit</div></div>
         <div class="mbody"><b>Durafit</b><span>Leather shoe branding</span></div>
       </a>
       <a class="mcard reveal" href="https://www.behance.net/gallery/225301297/Standee" target="_blank" rel="noopener">
-        <div class="mthumb">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/54473c225301297.Y3JvcCwxMzc0LDEwNzQsMCwyMTA.jpg" alt="Standee design" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="mfall">Standee</div>
-        </div>
+        <div class="mthumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/54473c225301297.Y3JvcCwxMzc0LDEwNzQsMCwyMTA.jpg" alt="Standee" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mfall">Standee</div></div>
         <div class="mbody"><b>Standee</b><span>Print &amp; display design</span></div>
       </a>
-      <a class="mcard reveal" href="https://www.behance.net/arethaselene3" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#B79CFF,#1E6FE6);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;">
-        <div class="mbody" style="padding:24px;"><b style="font-size:1.3rem;color:#fff;">See everything →</b><span style="color:rgba(255,255,255,.85);">behance.net/arethaselene3</span></div>
+      <a class="mcard reveal" href="https://www.behance.net/arethaselene3" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-align:center;background:var(--accent);color:#fff;border-color:var(--accent);min-height:160px;">
+        <div class="mbody"><b style="color:#fff;font-size:1.15rem;">See all work →</b><span style="color:rgba(255,255,255,.85);">on Behance</span></div>
       </a>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="wrap">
-    <div class="sec-eyebrow reveal">a little about me</div>
-    <h2 class="sec-title reveal">From science to design 🌱</h2>
-    <div class="about-card reveal">
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="sec-eyebrow">// about</span>
+      <h2 class="sec-title" style="margin-top:8px;">A little<br>about me</h2>
+    </div>
+    <div class="reveal">
       <p class="lead">I'm a UI/UX designer with 4 years of experience across fintech, food-tech, and service platforms — currently designing trading experiences at Samco Securities.</p>
-      <div class="path">
-        <span class="step">🧬 Biotech</span><span class="arrow">→</span>
-        <span class="step">✂️ Fashion Design</span><span class="arrow">→</span>
-        <span class="step">🎨 Design &amp; Tech</span><span class="arrow">→</span>
-        <span class="step">✨ Product Design</span>
-      </div>
-      <p>That winding path is my superpower: a scientist's curiosity, a fashion designer's eye, and a storyteller's voice (I even taught spoken English once!). It all adds up to products that are clear, usable, and genuinely nice to use. Lately I'm exploring AI-assisted design workflows to move faster without losing the craft.</p>
-      <div class="skills">
-        <span class="sk"><i>🔍</i>UX Research</span>
-        <span class="sk"><i>🧩</i>Interaction Design</span>
-        <span class="sk"><i>📐</i>Design Systems</span>
-        <span class="sk"><i>🧠</i>Behavioral Design</span>
-        <span class="sk"><i>🖼️</i>Prototyping</span>
-        <span class="sk"><i>🧪</i>Usability &amp; A/B Testing</span>
-        <span class="sk"><i>🎯</i>Figma Tokens</span>
-        <span class="sk"><i>🤖</i>AI for Design</span>
-        <span class="sk"><i>✏️</i>Figma · XD · Photoshop · Illustrator</span>
+      <p>My path here was anything but straight: biotechnology, then fashion design, then design &amp; technology. That mix is my edge — a scientist's curiosity, a designer's eye, and a storyteller's voice (I even taught spoken English once!). I care about products that are clear, usable, and genuinely nice to use, and lately I'm exploring AI-assisted workflows to move faster without losing the craft.</p>
+      <div class="chips">
+        <span class="chip">UX Research</span><span class="chip">Interaction Design</span><span class="chip">Design Systems</span>
+        <span class="chip">Prototyping</span><span class="chip">Usability &amp; A/B Testing</span><span class="chip">Figma Tokens</span>
+        <span class="chip">AI for Design</span><span class="chip">Figma · XD · Photoshop · Illustrator</span>
       </div>
     </div>
   </div>
@@ -432,44 +432,36 @@
 <!-- CONNECT -->
 <section id="connect" class="connect">
   <div class="wrap">
-    <div class="sec-eyebrow reveal">say hello</div>
-    <h2 class="sec-title reveal">Let's connect! 💌</h2>
-    <p class="sub reveal">Open to freelance &amp; full-time product design roles. The fastest way to reach me is email — I'd love to hear from you!</p>
-    <div class="links reveal">
-      <a class="clink y" href="mailto:mariammals3599@gmail.com">✉️ Send me a message</a>
-      <a class="clink" href="tel:+918883894443">📞 +91 88838 94443</a>
-      <a class="clink" href="https://www.behance.net/arethaselene3" target="_blank" rel="noopener">🎨 Behance</a>
-      <a class="clink" href="https://www.linkedin.com/in/mariammal-a-134303236" target="_blank" rel="noopener">💼 LinkedIn</a>
+    <span class="mono reveal">// say hi</span>
+    <h2 class="reveal">Let's connect!</h2>
+    <p class="reveal">Feel free to get in touch for collaborations, full-time roles, or just to say hi!</p>
+    <a class="email reveal" href="mailto:mariammals3599@gmail.com">mariammals3599@gmail.com</a>
+    <div class="socials reveal">
+      <a class="soc" href="https://www.behance.net/arethaselene3" target="_blank" rel="noopener" title="Behance">Bē</a>
+      <a class="soc" href="https://www.linkedin.com/in/mariammal-a-134303236" target="_blank" rel="noopener" title="LinkedIn">in</a>
+      <a class="soc" href="tel:+918883894443" title="Phone">☏</a>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div class="note">made with ♥ &amp; a lot of stars</div>
-    © 2026 — Mariammal A · UI/UX Designer · Chennai, India
-  </div>
-</footer>
+<footer>© 2026 Mariammal A · UI/UX Designer · Chennai, India</footer>
 
 <script>
-  // starfield
+  // rotating word
   (function(){
-    const c=document.getElementById('stars');
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
-    const n=Math.min(90, Math.round(window.innerWidth/16));
-    let html='';
-    for(let i=0;i<n;i++){
-      const s=(Math.random()*2.4+1).toFixed(1);
-      const x=(Math.random()*100).toFixed(2);
-      const y=(Math.random()*100).toFixed(2);
-      const d=(Math.random()*4+2).toFixed(2);
-      const delay=(Math.random()*5).toFixed(2);
-      html+=`<span class="star" style="width:${s}px;height:${s}px;left:${x}%;top:${y}%;animation-duration:${d}s;animation-delay:${delay}s"></span>`;
-    }
-    c.innerHTML=html;
+    const words=["research","design","prototype","simplify","test","create"];
+    const el=document.getElementById('rotword');
+    if(!el) return;
+    let i=0;
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    setInterval(()=>{
+      el.classList.add('out');
+      setTimeout(()=>{ i=(i+1)%words.length; el.textContent=words[i]; el.classList.remove('out'); },360);
+    },2200);
   })();
   // reveal
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 
